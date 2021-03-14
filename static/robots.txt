@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+sitemap: https://www.lemurweb.blog/sitemap.xml

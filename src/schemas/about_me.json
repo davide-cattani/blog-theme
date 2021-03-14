@@ -1,0 +1,46 @@
+{
+  "Main": {
+    "author": {
+      "type": "Text",
+      "config": {
+        "label": "Author",
+        "placeholder": "Your name"
+      }
+    },
+    "image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 512
+        },
+        "thumbnails": [],
+        "label": "Image"
+      }
+    },
+    "motto": {
+      "type": "Text",
+      "config": {
+        "label": "Motto",
+        "placeholder": "A quote, motto or important thing you want to be displayed below your name"
+      }
+    },
+    "short_biography": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, strong, em",
+        "allowTargetBlank": true,
+        "label": "Short Biography",
+        "placeholder": "The short biography is displayed in the homepage"
+      }
+    },
+    "full_biography": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, list-item, o-list-item, rtl",
+        "allowTargetBlank": true,
+        "label": "Full Biography",
+        "placeholder": "Your complete biography. Here you can put some rich-text (formatting, headings, paragraphs, images..)"
+      }
+    }
+  }
+}

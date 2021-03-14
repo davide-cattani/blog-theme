@@ -1,0 +1,62 @@
+{
+   "Main" : {
+     "name" : {
+       "type" : "Text",
+       "config" : {
+         "label" : "name",
+         "placeholder" : "Name of the category",
+         "useAsTitle" : true
+       }
+     },
+     "parent_category" : {
+       "type" : "Link",
+       "config" : {
+         "select" : "document",
+         "customtypes" : [ "category" ],
+         "label" : "Parent Category"
+       }
+     },
+     "showcase" : {
+       "type" : "Boolean",
+       "config" : {
+         "placeholder_false" : "No",
+         "placeholder_true" : "The last article in this category should appear in the home",
+         "default_value" : false,
+         "label" : "Showcase"
+       }
+     },
+     "uid" : {
+       "type" : "UID",
+       "config" : {
+         "label" : "Slug",
+         "placeholder" : "SEO-friendly text string that identifies this category"
+       }
+     },
+     "heading" : {
+       "type" : "Text",
+       "config" : {
+         "label" : "Heading",
+         "placeholder" : "The heading shown at the top of the category page",
+         "useAsTitle" : false
+       }
+     },
+     "subheading" : {
+       "type" : "Text",
+       "config" : {
+         "label" : "Subheading",
+         "placeholder" : "The subheading shown at the top of the category page",
+         "useAsTitle" : false
+       }
+     },
+     "featured_image" : {
+       "type" : "Image",
+       "config" : {
+         "constraint" : {
+           "width" : 1200
+         },
+         "thumbnails" : [ ],
+         "label" : "Featured Image"
+       }
+     }
+   }
+ }

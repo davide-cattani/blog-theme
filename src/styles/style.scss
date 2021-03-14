@@ -1,0 +1,72 @@
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+
+a,
+u {
+  text-decoration: none;
+}
+
+button {
+  font-family: unset;
+}
+
+//POST PAGE
+article {
+  .post-image {
+    display: block;
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3em;
+    margin-bottom: 3em;
+  }
+
+  .article-carousel-wrapper {
+    .slick-list {
+      transition: height 0.25s ease;
+    }
+
+    .article-carousel-slide {
+      position: relative;
+
+      .image-description {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+//valid for every carousel
+.slick-prev,
+.slick-next {
+  z-index: 1001;
+  width: 4rem;
+  height: 100%;
+}
+.slick-prev {
+  left: 0;
+}
+.slick-next {
+  right: 0;
+}
+.slick-prev:before,
+.slick-next:before {
+  color: white;
+  font-size: 2rem;
+}
+
+//only valid for home page carousel
+section#carousel,
+.post-carousel {
+  .slick-slide {
+    & > div {
+      position: relative;
+    }
+  }
+}

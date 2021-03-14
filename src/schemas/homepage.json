@@ -1,0 +1,28 @@
+{
+  "Main" : {
+    "title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1",
+        "label" : "title",
+        "placeholder" : "Title of the page"
+      }
+    },
+    "content" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, strong, em, hyperlink, image, embed, list-item, o-list-item",
+        "label" : "content",
+        "placeholder" : "Content under the title"
+      }
+    },
+    "banner_image" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "Banner Image"
+      }
+    }
+  }
+}

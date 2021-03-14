@@ -1,0 +1,39 @@
+{
+  "Main": {
+    "facebook": {
+      "type": "Link",
+      "config": {
+        "label": "Facebook",
+        "placeholder": "Link to Facebook page"
+      }
+    },
+    "instagram": {
+      "type": "Link",
+      "config": {
+        "label": "Instagram",
+        "placeholder": "Link to Instagram page"
+      }
+    },
+    "twitter": {
+      "type": "Link",
+      "config": {
+        "label": "Twitter",
+        "placeholder": "Link to Twitter page"
+      }
+    },
+    "youtube": {
+      "type": "Link",
+      "config": {
+        "label": "Youtube",
+        "placeholder": "Link to Youtube channel"
+      }
+    },
+    "mail": {
+      "type": "Link",
+      "config": {
+        "label": "Mail",
+        "placeholder": "es: mailto:xxx@yyy.zzz"
+      }
+    }
+  }
+}
