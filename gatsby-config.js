@@ -2,6 +2,8 @@ require('dotenv').config({
   path: `.env`,
 })
 
+const merge = require('lodash/merge')
+
 //const prismicHtmlSerializer = require('./src/gatsby/htmlSerializer')
 
 const defaultWebsite = require('./config/website')
@@ -9,9 +11,13 @@ const defaultTheme = require('./config/theme')
 
 module.exports = (themeOptions) => {
   const website =
-    themeOptions && themeOptions.website ? themeOptions.website : defaultWebsite
+    themeOptions && themeOptions.website
+      ? merge(defaultWebsite, themeOptions.website)
+      : defaultWebsite
   const theme =
-    themeOptions && themeOptions.theme ? themeOptions.theme : defaultTheme
+    themeOptions && themeOptions.theme
+      ? merge(defaultTheme, themeOptions.theme)
+      : defaultTheme
 
   const pathPrefix = website.pathPrefix === '/' ? '/' : website.pathPrefix
 

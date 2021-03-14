@@ -25,6 +25,8 @@ export * from './Navbar/NavbarItem'
 export * from './Modal/Modal'
 
 export * from './Post/Article'
+export * from './Post/Carousel'
+export * from './Post/Image'
 
 export * from './Grid/GridWrapper'
 export * from './Grid/GridItem'

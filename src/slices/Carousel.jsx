@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import BackgroundImage from 'gatsby-background-image'
 import Img from 'gatsby-image'
 import Slider from 'react-slick'
+
+import {CarouselWrapper, CarouselTitle, CarouselSlide, CarouselSlideDescription} from '../elements'
+import styled from 'styled-components'
 
 var settings = {
   arrows: true,
@@ -13,11 +15,11 @@ var settings = {
 
 const Carousel = ({ input }) => {
   return (
-    <div className='article-carousel-wrapper my-6 pb-4'>
+    <CarouselWrapper>
       {input.primary.carousel_heading && (
-        <h3 className=' content has-text-centered'>
+        <CarouselTitle>
           {input.primary.carousel_heading}
-        </h3>
+        </CarouselTitle>
       )}
       {input.items && input.items.length > 0 && (
         <Slider {...settings}>
@@ -29,7 +31,7 @@ const Carousel = ({ input }) => {
           })}
         </Slider>
       )}
-    </div>
+    </CarouselWrapper>
   )
 }
 
@@ -41,13 +43,12 @@ Carousel.propTypes = {
 
 const CarouselImage = ({ item }) => {
   return (
-    <div className='article-carousel-slide'>
+    <CarouselSlide>
       <Img fluid={item.image.fluid} />
-      <div
-        className='image-description content has-text-light is-italic opaque is-size-7-mobile p-2'
+      <CarouselSlideDescription
         dangerouslySetInnerHTML={{ __html: item.image_description.html }}
       />
-    </div>
+    </CarouselSlide>
     // <BackgroundImage className='' fluid={item.image.fluid}>
     //   <div
     //     className='image-description content has-text-light is-italic opaque p-2'

@@ -2,7 +2,7 @@
   "name": "@lemurweb/gatsby-theme-blog-prismic",
   "publishName": "@lemurweb/gatsby-theme-blog-prismic",
   "demoName": "gatsby-theme-blog-prismic",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "index.js",
   "license": "MIT",
   "scripts": {

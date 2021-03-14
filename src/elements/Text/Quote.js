@@ -9,3 +9,8 @@ export const Quote = styled.blockquote`
   border-radius: ${(props) => props.theme.borders.control};
   font-style: italic;
 `
+
+export const QuoteAuthor = styled.p`
+  margin-top: ${(props) => props.theme.spacings.small};
+  font-style: normal;
+`

@@ -1,4 +1,5 @@
 import React from 'react'
+import { merge } from 'lodash'
 
 import './src/styles/style.scss'
 
@@ -33,7 +34,7 @@ const GlobalStyles = createGlobalStyle`
 
 export const wrapRootElement = ({ element }, themeOptions) => {
   const theme =
-    themeOptions && themeOptions.theme ? themeOptions.theme : defaultTheme
+    themeOptions && themeOptions.theme ? merge(defaultTheme, themeOptions.theme) : defaultTheme
 
   return (
     <ThemeProvider theme={theme}>

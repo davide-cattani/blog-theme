@@ -2,14 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
 
+import { ImageWrapper, ImageCaption } from '../elements'
+
 const Image = ({ input }) => {
   return (
-    <div className='post-image'>
+    <ImageWrapper>
       <Img fluid={input.primary.image.fluid} />
       {input.primary.caption && (
-        <figcaption className='has-text-centered is-italic  is-size-7'>{input.primary.caption}</figcaption>
+        <ImageCaption>
+          {input.primary.caption}
+        </ImageCaption>
       )}
-    </div>
+    </ImageWrapper>
   )
 }
 

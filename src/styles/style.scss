@@ -25,20 +25,6 @@ article {
     .slick-list {
       transition: height 0.25s ease;
     }
-
-    .article-carousel-slide {
-      position: relative;
-
-      .image-description {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-
-        p {
-          margin-bottom: 0;
-        }
-      }
-    }
   }
 }
 

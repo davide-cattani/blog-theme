@@ -23,7 +23,7 @@ module.exports = {
     menu: 'Abel, sans-serif',
 
     sizes: {
-      small: '.75em',
+      small: '.9em',
       medium: '1em',
       large: '1.2em',
       xLarge: '1.5em',
@@ -176,6 +176,11 @@ module.exports = {
     },
     carousel: {
       height: '50vh',
+    },
+    postPage: {
+      image: {
+        maxWidth: '75%',
+      },
     },
     progressBar: {
       height: '6',
