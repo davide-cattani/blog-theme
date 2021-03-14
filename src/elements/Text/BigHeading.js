@@ -6,9 +6,8 @@ export const BigHeading = styled.h1`
 
   text-align: ${(props) => (props.textCenter ? 'center' : 'unset')};
 
-  font-size: ${(props) => props.theme.fonts.sizes.xLarge};
-
+  font-size: ${(props) => props.theme.fonts.sizes.bigHeading.desktop};
   @media ${(props) => props.theme.breakpoints.touch} {
-    font-size: ${(props) => props.theme.fonts.sizes.large};
+    font-size: ${(props) => props.theme.fonts.sizes.bigHeading.touch};
   }
 `

@@ -4,7 +4,6 @@ import Img from 'gatsby-image'
 import Slider from 'react-slick'
 
 import {CarouselWrapper, CarouselTitle, CarouselSlide, CarouselSlideDescription} from '../elements'
-import styled from 'styled-components'
 
 var settings = {
   arrows: true,

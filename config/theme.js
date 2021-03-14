@@ -6,6 +6,7 @@ const colors = {
   light: '#fbfbfb',
   dark: '#404040',
   darker: '#202020',
+  lightGrey: '#b7b7b7',
   grey: '#a0a0a0',
   primary: '#94e2af',
   primaryLight: '#c3efd2',
@@ -13,6 +14,18 @@ const colors = {
   secondary: '#0a232d',
   warning: '#ffcc00',
   warningDarker: '#ecbd00',
+}
+
+const fontSizes = {
+  xSmall: '.75em',
+  small: '.85em',
+  normal: '1em',
+  medium: '1.1em',
+  large: '1.2em',
+  xLarge: '1.4em',
+  xxLarge: '1.6em',
+  xxxLarge: '1.8em',
+  menu: 'medium',
 }
 
 module.exports = {
@@ -23,11 +36,19 @@ module.exports = {
     menu: 'Abel, sans-serif',
 
     sizes: {
-      small: '.9em',
-      medium: '1em',
-      large: '1.2em',
-      xLarge: '1.5em',
-      menu: 'medium',
+      ...fontSizes,
+      bigHeading: {
+        desktop: fontSizes.xxLarge,
+        touch: fontSizes.xLarge,
+      },
+      heading: {
+        desktop: fontSizes.xLarge,
+        touch: fontSizes.large,
+      },
+      subHeading: {
+        desktop: fontSizes.large,
+        touch: fontSizes.medium,
+      },
     },
 
     weights: {

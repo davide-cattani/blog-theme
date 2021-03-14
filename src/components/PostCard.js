@@ -53,7 +53,7 @@ const PostCard = ({ post, listItem }) => {
             </div>
           )}
 
-        <GatsbyLink to={`/post/${post.uid}`}>
+        <GatsbyLink aria-label={postData.title} to={`/post/${post.uid}`}>
           <PostCardTitle>{postData.title}</PostCardTitle>
           {postData.destination && (
             <p className='has-text-secondary'>

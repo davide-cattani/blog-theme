@@ -16,6 +16,11 @@ const GlobalStyles = createGlobalStyle`
       margin-block-end: 0.5em;
    }
 
+   body {
+      font-size: 1em;
+      line-height: 1.3;
+   }
+
    body, html {
       margin: 0;
       padding: 0;
@@ -34,7 +39,9 @@ const GlobalStyles = createGlobalStyle`
 
 export const wrapRootElement = ({ element }, themeOptions) => {
   const theme =
-    themeOptions && themeOptions.theme ? merge(defaultTheme, themeOptions.theme) : defaultTheme
+    themeOptions && themeOptions.theme
+      ? merge(defaultTheme, themeOptions.theme)
+      : defaultTheme
 
   return (
     <ThemeProvider theme={theme}>

@@ -16,7 +16,8 @@ import {
   TextArea,
   Button,
   InfoMessage,
-  CenteredBox
+  CenteredBox,
+  AnchorLink
 } from '../elements'
 import { ThemeContext } from 'styled-components'
 
@@ -63,7 +64,7 @@ const ContactPage = ({ location }) => {
         pathname={location.pathname}
       />
       <Section>
-        <Container size={theme.dimensions.container.xSmall}>
+        <Container size={theme.dimensions.container.small}>
           <Card>
             <CardContent>
               <form onSubmit={(event) => handleSubmit(event)}>
@@ -107,18 +108,17 @@ const ContactPage = ({ location }) => {
                 </Field>
 
                 <Field checkbox>
-                  <Label>
-                    <Input
-                      type='checkbox'
-                      required
-                      checked={privacyAccepted}
-                      onChange={(event) => setPrivacyAccepted(!privacyAccepted)}
-                    />{' '}
-                    Autorizzo il trattamento dei dati personali secondo la{' '}
-                    <a href={process.env.GATSBY_PRIVACY_POLICY_URL}>
-                      Privacy Policy
-                    </a>
-                  </Label>
+                  <Input
+                    checkbox
+                    type='checkbox'
+                    required
+                    checked={privacyAccepted}
+                    onChange={(event) => setPrivacyAccepted(!privacyAccepted)}
+                  />{' '}
+                  Autorizzo il trattamento dei dati personali secondo la{' '}
+                  <AnchorLink href={process.env.GATSBY_PRIVACY_POLICY_URL}>
+                    Privacy Policy
+                  </AnchorLink>
                 </Field>
                 <CenteredBox>
                   {emailSentMessage && emailSentMessage.length > 0 && (

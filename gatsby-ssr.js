@@ -16,6 +16,11 @@ const GlobalStyles = createGlobalStyle`
       margin-block-end: 0.5em;
    }
 
+   body {
+      font-size: 1em;
+      line-height: 1.3;
+   }
+
    body, html {
       margin: 0;
       padding: 0;

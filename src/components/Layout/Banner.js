@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
 import { Container, GatsbyLink } from '../../elements'
@@ -16,7 +15,7 @@ const Banner = ({ bannerImage, socialLinks }) => {
     <header id='banner'>
       <Container>
         {bannerImage && bannerImage.fluid && (
-          <BannerImageWrapper to='/'>
+          <BannerImageWrapper aria-label='banner' to='/'>
             <Img
               style={{ height: '100%', width: '100%' }}
               fluid={bannerImage.fluid}

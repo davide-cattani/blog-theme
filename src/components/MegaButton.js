@@ -14,7 +14,7 @@ const MButton = styled(Button)`
 const MegaButton = ({ linkTo, text }) => {
   return (
     <div style={{ textAlign: 'center' }}>
-      <GatsbyLink to={linkTo}>
+      <GatsbyLink aria-label={text} to={linkTo}>
         <MButton>{text}</MButton>
       </GatsbyLink>
     </div>

@@ -141,9 +141,9 @@ module.exports = (themeOptions) => {
           theme_color: theme.colors.primary,
           display: 'standalone',
           icon: website.favicon,
-          icon_options: {
-            purpose: `maskable`,
-          },
+          // icon_options: {
+          //   purpose: `maskable`,
+          // },
         },
       },
       // Must be placed at the end

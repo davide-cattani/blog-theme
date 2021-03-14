@@ -1,18 +1,14 @@
 import React, { useState } from 'react'
 import { Link as GatsbyLink } from 'gatsby'
-import Image from 'gatsby-image'
 import config from '../../../config/website'
-import Headroom from 'react-headroom'
-import { IoMdArrowDropdown, IoMdArrowDropright } from 'react-icons/io'
 import { IoSearchOutline } from 'react-icons/io5'
 import SearchField from './SearchField'
 
-import { AiOutlineHome, AiOutlineMail } from 'react-icons/ai'
-import { BsBriefcase } from 'react-icons/bs'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { GrClose } from 'react-icons/gr'
+import { RiArrowDropRightLine } from 'react-icons/ri'
 
-import { Container, ModalWrapper, Button } from '../../elements'
+import { ModalWrapper, Button } from '../../elements'
 import styled from 'styled-components'
 import { css } from 'styled-components'
 
@@ -74,7 +70,6 @@ const NavbarMenuItem = styled.li`
   ${styleForMenuItemColors};
 
   :hover {
-    
     > ul {
       visibility: visible;
       opacity: 1;
@@ -103,6 +98,7 @@ const NavbarTrigger = styled.div`
 `
 
 const NavbarMenuDropdown = styled.ul`
+  border-radius: 0 ${(props) => props.theme.borders.control} ${(props) => props.theme.borders.control} 0;
   border-left: 1px solid ${(props) => props.theme.colors.menu.dropdown.border};
   background-color: ${(props) => props.theme.colors.menu.dropdown.background};
   visibility: hidden;
@@ -124,6 +120,12 @@ const NavbarMenuDropdown = styled.ul`
 const NavbarLink = styled(GatsbyLink)`
   display: block;
   padding: ${(props) => props.theme.spacings.small};
+
+  svg {
+    @media ${(props) => props.theme.breakpoints.touch} {
+      display: none;
+    }
+  }
 `
 
 const ModalContent = styled.div`
@@ -134,7 +136,7 @@ const ModalButton = styled(Button)`
   margin: ${(props) => props.theme.spacings.medium};
   padding: ${(props) => props.theme.spacings.small};
   border: 1px solid ${(props) => props.theme.colors.light};
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.2);
   position: absolute;
   top: 0;
   right: 0;
@@ -192,7 +194,7 @@ const Navbar = ({ logo, macroCategories }) => {
                   <>
                     <NavbarMenuItem>
                       <NavbarLink to={`/category/${cat.uid}`}>
-                        {cat.name}
+                        {cat.name} <RiArrowDropRightLine />
                       </NavbarLink>
                       <NavbarMenuDropdown>
                         {cat.subCategories.map((subCat) => {
@@ -203,7 +205,7 @@ const Navbar = ({ logo, macroCategories }) => {
                             return (
                               <NavbarMenuItem>
                                 <NavbarLink to={`/category/${subCat.uid}`}>
-                                  {subCat.name}
+                                  {subCat.name} <RiArrowDropRightLine />
                                 </NavbarLink>
                                 <NavbarMenuDropdown>
                                   {subCat.subCategories.map((tlCat) => (

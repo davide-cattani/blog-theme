@@ -32,7 +32,7 @@ const CategoryCard = ({ category }) => {
     category.data.featured_image && category.data.featured_image.fluid
 
   return (
-    <GatsbyLink to={`/category/${category.uid}`}>
+    <GatsbyLink aria-label={category.data.name} to={`/category/${category.uid}`}>
       <CategoryCardWrapper>
         {hasImage && (
           <Img

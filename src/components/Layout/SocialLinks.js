@@ -2,7 +2,7 @@ import React from 'react'
 import { FaFacebook, FaInstagram, FaYoutube, FaTwitter } from 'react-icons/fa'
 import { FiMail } from 'react-icons/fi'
 
-import {AnchorLink} from '../../elements'
+import { AnchorLink } from '../../elements'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 `
 
 const SocialLink = styled(AnchorLink)`
-  margin: ${props => props.theme.spacings.xSmall}
+  margin: ${(props) => props.theme.spacings.xSmall};
 `
 
 const Link = ({ social, url }) => {
@@ -34,13 +34,11 @@ const Link = ({ social, url }) => {
     case 'mail':
       Icon = <FiMail size={size} />
       break
+    default:
+      break
   }
 
-  return (
-    <SocialLink href={url}>
-      {Icon}
-    </SocialLink>
-  )
+  return <SocialLink aria-label={social} href={url}>{Icon}</SocialLink>
 }
 
 const SocialLinks = ({ links }) => {

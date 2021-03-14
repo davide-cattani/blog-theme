@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { navigate } from 'gatsby'
-import { IoSearchOutline } from 'react-icons/io5'
 
 import { Input, Button, CenteredBox } from '../../elements'
 import styled from 'styled-components'

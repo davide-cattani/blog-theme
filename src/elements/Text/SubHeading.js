@@ -6,9 +6,8 @@ export const SubHeading = styled.h2`
 
   text-align: ${(props) => (props.textCenter ? 'center' : 'unset')};
 
-  font-size: ${(props) => props.theme.fonts.sizes.medium};
-
+  font-size: ${(props) => props.theme.fonts.sizes.subHeading.desktop};
   @media ${(props) => props.theme.breakpoints.touch} {
-    font-size: ${(props) => props.theme.fonts.sizes.normal};
+    font-size: ${(props) => props.theme.fonts.sizes.subHeading.touch};
   }
 `
