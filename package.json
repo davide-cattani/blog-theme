@@ -1,7 +1,8 @@
 {
-  "name": "gatsby-theme-blog-prismic",
+  "name": "@lemurweb/gatsby-theme-blog-prismic",
   "publishName": "@lemurweb/gatsby-theme-blog-prismic",
-  "version": "1.0.0",
+  "demoName": "gatsby-theme-blog-prismic",
+  "version": "1.0.2",
   "main": "index.js",
   "license": "MIT",
   "scripts": {

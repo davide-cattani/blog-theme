@@ -1,0 +1,14 @@
+const website = require('./config/website')
+const theme = require('./config/theme')
+
+module.exports = {
+  plugins: [
+    {
+      resolve: `@lemurweb/gatsby-theme-blog-prismic`,
+      options: {
+        website: website,
+        theme: theme,
+      },
+    },
+  ],
+}
