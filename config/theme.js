@@ -49,6 +49,10 @@ module.exports = {
         desktop: fontSizes.large,
         touch: fontSizes.medium,
       },
+      postCardTitle: {
+        desktop: fontSizes.large,
+        touch: fontSizes.medium,
+      }
     },
 
     weights: {

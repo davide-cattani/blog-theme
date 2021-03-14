@@ -8,7 +8,11 @@ import { BigHeading, Heading, GridWrapper, GridItem } from '../../elements'
 import styled from 'styled-components'
 
 const ImageWrapper = styled(GridItem)`
-  padding: ${(props) => props.theme.spacings.large};
+  padding: ${(props) => props.theme.spacings.xxLarge};
+
+  @media ${(props) => props.theme.breakpoints.mobile} {
+    padding: ${(props) => props.theme.spacings.large};
+  }
 `
 
 const ContentWrapper = styled(GridItem)`

@@ -6,6 +6,8 @@ export const DividerWithText = styled.div`
   align-items: center;
   text-align: center;
 
+  color: ${(props) => props.theme.colors.dividerText.divider};
+
   &::before,
   &::after {
     content: '';
