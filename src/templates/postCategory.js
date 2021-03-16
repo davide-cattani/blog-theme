@@ -2,7 +2,6 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout/Layout'
 import SEO from '../components/SEO'
-import website from '../../config/website'
 import PostList from '../components/PostList'
 import CategoryPageHeader from '../components/CategoryPageHeader'
 
@@ -10,6 +9,7 @@ import { Container, Section, ItalicMessageText } from '../elements'
 
 const PostCategory = ({ data, location }) => {
   const { category } = data
+  const { website } = data.site
   const { edges: posts } = data.posts
 
   return (
@@ -27,13 +27,9 @@ const PostCategory = ({ data, location }) => {
             subheading={category.data.subheading}
           />
 
-          {posts && posts.length > 0 && (
-            <PostList posts={posts} />
-          )}
+          {posts && posts.length > 0 && <PostList posts={posts} />}
           {(!posts || posts.length === 0) && (
-            <ItalicMessageText>
-              Non ci sono articoli qui.. :(
-            </ItalicMessageText>
+            <ItalicMessageText>Non ci sono articoli qui.. :(</ItalicMessageText>
           )}
         </Container>
       </Section>
@@ -86,6 +82,11 @@ export const pageQuery = graphql`
             }
           }
         }
+      }
+    }
+    site {
+      website: siteMetadata {
+        titleAlt
       }
     }
   }

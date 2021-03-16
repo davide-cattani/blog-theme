@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { Link as GatsbyLink } from 'gatsby'
-import config from '../../../config/website'
+import { useStaticQuery, graphql } from 'gatsby'
 import { IoSearchOutline } from 'react-icons/io5'
 import SearchField from './SearchField'
 
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { GrClose } from 'react-icons/gr'
-import { RiArrowDropRightLine } from 'react-icons/ri'
+import { RiArrowDropRightLine, RiArrowDropDownLine } from 'react-icons/ri'
 
-import { ModalWrapper, Button } from '../../elements'
+import { ModalWrapper, Button, Container } from '../../elements'
 import styled from 'styled-components'
 import { css } from 'styled-components'
 
@@ -33,14 +33,18 @@ const NavbarWrapper = styled.nav`
   box-shadow: ${(props) => props.theme.shadows.medium};
   background-color: ${(props) => props.theme.colors.menu.background};
 
-  @media ${(props) => props.theme.breakpoints.desktop} {
-    height: 100%;
-  }
-
-  @media ${(props) => props.theme.breakpoints.touch} {
-    width: 100%;
-  }
+  ${(props) =>
+    props.horizontal
+      ? `width: 100%;`
+      : `@media ${props.theme.breakpoints.desktop} {
+          height: 100%;
+          }
+        @media ${props.theme.breakpoints.touch} {
+          width: 100%;
+        }`}
 `
+
+const NavbarContainer = styled(Container)``
 
 const NavbarMenuList = styled.ul`
   display: ${(props) => (props.active ? 'flex' : 'none')};
@@ -58,6 +62,16 @@ const NavbarMenuList = styled.ul`
     width: 100%;
     text-align: center;
   }
+
+  ${(props) =>
+    props.horizontal
+      ? `
+        @media ${props.theme.breakpoints.desktop} {
+          display: inline-flex;
+          flex-direction: row;
+        }
+        `
+      : ``}
 `
 
 const NavbarMenuItem = styled.li`
@@ -95,10 +109,39 @@ const NavbarTrigger = styled.div`
     display: inline-block;
     float: right;
   }
+
+  ${(props) =>
+    props.horizontal
+      ? `@media ${props.theme.breakpoints.desktop} {
+          display: none;
+        }`
+      : ``}
+`
+
+const NavbarSearchItem = styled.div`
+  padding: ${(props) => props.theme.spacings.xSmall}
+    ${(props) => props.theme.spacings.small};
+  text-align: center;
+
+  ${styleForMenuItemColors};
+
+  @media ${(props) => props.theme.breakpoints.touch} {
+    display: inline-block;
+    float: right;
+  }
+
+  ${(props) =>
+    props.horizontal
+      ? `@media ${props.theme.breakpoints.desktop} {
+          display: inline-block;
+          float: right;
+        }`
+      : ``}
 `
 
 const NavbarMenuDropdown = styled.ul`
-  border-radius: 0 ${(props) => props.theme.borders.control} ${(props) => props.theme.borders.control} 0;
+  border-radius: 0 ${(props) => props.theme.borders.control}
+    ${(props) => props.theme.borders.control} 0;
   border-left: 1px solid ${(props) => props.theme.colors.menu.dropdown.border};
   background-color: ${(props) => props.theme.colors.menu.dropdown.background};
   visibility: hidden;
@@ -115,6 +158,10 @@ const NavbarMenuDropdown = styled.ul`
     width: 100%;
     white-space: nowrap;
   }
+`
+
+const NavbarMenuDropdownFirstLevel = styled(NavbarMenuDropdown)`
+  ${(props) => (props.horizontal ? `top: unset; left: unset;` : ``)}
 `
 
 const NavbarLink = styled(GatsbyLink)`
@@ -147,101 +194,133 @@ const Navbar = ({ logo, macroCategories }) => {
   const [active, setActive] = useState(false)
   const [showSearchModal, setShowSearchModal] = useState(false)
 
+  const { navbar } = useStaticQuery(graphql`
+    query Navbar {
+      site {
+        siteMetadata {
+          website {
+            navbar {
+              HORIZONTAL
+              HAS_SEARCH_MODAL
+              HAS_SEARCH_FIELD
+            }
+          }
+        }
+      }
+    }
+  `).site.siteMetadata.website
+
+  const isHorizontal = navbar.HORIZONTAL
+
   return (
     <>
       <NavbarWrapper
+        horizontal={isHorizontal}
         onMouseEnter={() => setActive(true)}
         onMouseLeave={() => {
           setActive(false)
         }}
       >
-        <NavbarTrigger active={active} onPointerDown={() => setActive(!active)}>
-          <GiHamburgerMenu size='2em' />
-        </NavbarTrigger>
-        {config.navbar.HAS_SEARCH_FIELD && (
-          <div className='navbar-item search-item is-clickable'>
-            <SearchField />
-          </div>
-        )}
-        {config.navbar.HAS_SEARCH_MODAL && (
-          <NavbarTrigger>
-            <span
-              onClick={() => {
-                setShowSearchModal(true)
-              }}
-            >
-              <IoSearchOutline size='2em' />
-            </span>
+        <NavbarContainer>
+          <NavbarTrigger
+            horizontal={isHorizontal}
+            active={active}
+            onPointerUp={() => setActive(!active)}
+          >
+            <GiHamburgerMenu size='2em' />
           </NavbarTrigger>
-        )}
-        <NavbarMenuList active={active}>
-          <NavbarMenuItem>
-            <NavbarLink to='/'>Home</NavbarLink>
-          </NavbarMenuItem>
-          <NavbarMenuItem>
-            <NavbarLink to='/about'>Chi Sono</NavbarLink>
-          </NavbarMenuItem>
-          <NavbarMenuItem>
-            <NavbarLink to='/contact'>Contatti</NavbarLink>
-          </NavbarMenuItem>
+          {navbar.HAS_SEARCH_FIELD && (
+            <div className='navbar-item search-item is-clickable'>
+              <SearchField />
+            </div>
+          )}
+          {navbar.HAS_SEARCH_MODAL && (
+            <NavbarSearchItem horizontal={isHorizontal}>
+              <span
+                onClick={() => {
+                  setShowSearchModal(true)
+                }}
+              >
+                <IoSearchOutline size='2em' />
+              </span>
+            </NavbarSearchItem>
+          )}
+          <NavbarMenuList horizontal={isHorizontal} active={active}>
+            <NavbarMenuItem>
+              <NavbarLink to='/'>Home</NavbarLink>
+            </NavbarMenuItem>
+            <NavbarMenuItem>
+              <NavbarLink to='/about'>Chi Sono</NavbarLink>
+            </NavbarMenuItem>
+            <NavbarMenuItem>
+              <NavbarLink to='/contact'>Contatti</NavbarLink>
+            </NavbarMenuItem>
 
-          {macroCategories &&
-            macroCategories.length > 0 &&
-            macroCategories.map((cat) => {
-              //if has second-level subcategories
-              if (cat.subCategories && cat.subCategories.length > 0) {
-                return (
-                  <>
+            {macroCategories &&
+              macroCategories.length > 0 &&
+              macroCategories.map((cat) => {
+                //if has second-level subcategories
+                if (cat.subCategories && cat.subCategories.length > 0) {
+                  return (
+                    <>
+                      <NavbarMenuItem>
+                        <NavbarLink to={`/category/${cat.uid}`}>
+                          {cat.name}{' '}
+                          {isHorizontal ? (
+                            <RiArrowDropDownLine />
+                          ) : (
+                            <RiArrowDropRightLine />
+                          )}
+                        </NavbarLink>
+                        <NavbarMenuDropdownFirstLevel horizontal={isHorizontal}>
+                          {cat.subCategories.map((subCat) => {
+                            if (
+                              subCat.subCategories &&
+                              subCat.subCategories.length > 0
+                            ) {
+                              return (
+                                <NavbarMenuItem>
+                                  <NavbarLink to={`/category/${subCat.uid}`}>
+                                    {subCat.name} <RiArrowDropRightLine />
+                                  </NavbarLink>
+                                  <NavbarMenuDropdown>
+                                    {subCat.subCategories.map((tlCat) => (
+                                      <NavbarMenuItem>
+                                        <NavbarLink
+                                          to={`/category/${tlCat.uid}`}
+                                        >
+                                          {tlCat.name}
+                                        </NavbarLink>
+                                      </NavbarMenuItem>
+                                    ))}
+                                  </NavbarMenuDropdown>
+                                </NavbarMenuItem>
+                              )
+                            } else
+                              return (
+                                <NavbarMenuItem>
+                                  <NavbarLink to={`/category/${subCat.uid}`}>
+                                    {subCat.name}
+                                  </NavbarLink>
+                                </NavbarMenuItem>
+                              )
+                          })}
+                        </NavbarMenuDropdownFirstLevel>
+                      </NavbarMenuItem>
+                    </>
+                  )
+                } else {
+                  return (
                     <NavbarMenuItem>
                       <NavbarLink to={`/category/${cat.uid}`}>
-                        {cat.name} <RiArrowDropRightLine />
+                        {cat.name}
                       </NavbarLink>
-                      <NavbarMenuDropdown>
-                        {cat.subCategories.map((subCat) => {
-                          if (
-                            subCat.subCategories &&
-                            subCat.subCategories.length > 0
-                          ) {
-                            return (
-                              <NavbarMenuItem>
-                                <NavbarLink to={`/category/${subCat.uid}`}>
-                                  {subCat.name} <RiArrowDropRightLine />
-                                </NavbarLink>
-                                <NavbarMenuDropdown>
-                                  {subCat.subCategories.map((tlCat) => (
-                                    <NavbarMenuItem>
-                                      <NavbarLink to={`/category/${tlCat.uid}`}>
-                                        {tlCat.name}
-                                      </NavbarLink>
-                                    </NavbarMenuItem>
-                                  ))}
-                                </NavbarMenuDropdown>
-                              </NavbarMenuItem>
-                            )
-                          } else
-                            return (
-                              <NavbarMenuItem>
-                                <NavbarLink to={`/category/${subCat.uid}`}>
-                                  {subCat.name}
-                                </NavbarLink>
-                              </NavbarMenuItem>
-                            )
-                        })}
-                      </NavbarMenuDropdown>
                     </NavbarMenuItem>
-                  </>
-                )
-              } else {
-                return (
-                  <NavbarMenuItem>
-                    <NavbarLink to={`/category/${cat.uid}`}>
-                      {cat.name}
-                    </NavbarLink>
-                  </NavbarMenuItem>
-                )
-              }
-            })}
-        </NavbarMenuList>
+                  )
+                }
+              })}
+          </NavbarMenuList>
+        </NavbarContainer>
       </NavbarWrapper>
 
       {/* SEARCH MODAL */}

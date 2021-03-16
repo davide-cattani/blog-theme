@@ -3,7 +3,6 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import Layout from '../components/Layout/Layout'
 import SEO from '../components/SEO/SEO'
-import website from '../../config/website'
 
 import {
   Container,
@@ -13,11 +12,12 @@ import {
   BigHeading,
   Quote,
 } from '../elements'
-import { ThemeContext } from 'styled-components'
+//import { ThemeContext } from 'styled-components'
 
 const AboutPage = ({ data, location }) => {
   const { about } = data
-  const theme = useContext(ThemeContext)
+  const { website } = data.site
+  //const theme = useContext(ThemeContext)
 
   return (
     <Layout>
@@ -43,9 +43,7 @@ const AboutPage = ({ data, location }) => {
               )}
             </GridItem>
             <GridItem>
-              <Img
-                fluid={about.data.image.fluid}
-              />
+              <Img fluid={about.data.image.fluid} />
             </GridItem>
           </GridWrapper>
         </Container>
@@ -58,6 +56,12 @@ export default AboutPage
 
 export const pageQuery = graphql`
   query AboutPageQuery {
+    site {
+      website: siteMetadata {
+        titleAlt
+      }
+    }
+
     about: prismicAboutMe {
       data {
         author

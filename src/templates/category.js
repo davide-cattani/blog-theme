@@ -2,14 +2,14 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout/Layout'
 import SEO from '../components/SEO'
-import website from '../../config/website'
 import SubCategoryList from '../components/SubCategoryList'
 import CategoryPageHeader from '../components/CategoryPageHeader'
 
-import { Container, Section} from '../elements'
+import { Container, Section } from '../elements'
 
 const Category = ({ data, location }) => {
   const { category } = data
+  const { website } = data.site
   //const { edges: subCategories } = data.subCategories
 
   const subCategories = data.subCategories.edges
@@ -82,6 +82,11 @@ export const pageQuery = graphql`
             }
           }
         }
+      }
+    }
+    site {
+      website: siteMetadata {
+        titleAlt
       }
     }
   }

@@ -17,7 +17,7 @@ export const CarouselSlideDescription = styled.div`
   bottom: 0;
   width: 100%;
 
-  padding: ${(props) => props.theme.spacings.small};
+  padding: ${(props) => props.theme.spacings.xSmall};
 
   background-color: ${(props) => props.theme.colors.textboxOpaque.background};
   color: ${(props) => props.theme.colors.light};
@@ -27,7 +27,7 @@ export const CarouselSlideDescription = styled.div`
   }
 
   @media ${(props) => props.theme.breakpoints.touch} {
-   padding: ${(props) => props.theme.spacings.xSmall};
+   padding: ${(props) => props.theme.spacings.xxSmall};
     font-size: ${(props) => props.theme.fonts.sizes.small};
   }
 `

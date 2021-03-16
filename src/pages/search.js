@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout/Layout'
 import SEO from '../components/SEO/SEO'
-import config from '../../config/website'
 import { BiSearchAlt } from 'react-icons/bi'
 import PostList from '../components/PostList'
 
@@ -45,12 +44,14 @@ const SearchPage = ({ data, location }) => {
   )
   const [results, setResults] = useState([])
 
+  const { website } = data.site
+
   useEffect(() => {
     if (!query || !window.__LUNR__) {
       setResults([])
       return
     }
-    const lunrIndex = window.__LUNR__[`${config.siteLanguage}`]
+    const lunrIndex = window.__LUNR__[`${website.siteLanguage}`]
 
     if (lunrIndex) {
       const searchResults = lunrIndex.index.search(query)
@@ -64,7 +65,10 @@ const SearchPage = ({ data, location }) => {
 
   return (
     <Layout>
-      <SEO title={`Search | ${config.titleAlt}`} pathname={location.pathname} />
+      <SEO
+        title={`Search | ${website.titleAlt}`}
+        pathname={location.pathname}
+      />
       <Section id='search'>
         <Container size={theme.dimensions.container.xSmall}>
           <Wrapper>
@@ -98,6 +102,11 @@ export default SearchPage
 
 export const pageQuery = graphql`
   query SearchPageQuery {
-    __typename
+    site {
+      website: siteMetadata {
+        titleAlt
+        siteLanguage
+      }
+    }
   }
 `

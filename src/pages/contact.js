@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
 import { HiMail } from 'react-icons/hi'
 import * as emailjs from 'emailjs-com'
 import Layout from '../components/Layout/Layout'
 import SEO from '../components/SEO/SEO'
-import website from '../../config/website'
 
 import {
   Container,
@@ -17,7 +17,7 @@ import {
   Button,
   InfoMessage,
   CenteredBox,
-  AnchorLink
+  AnchorLink,
 } from '../elements'
 import { ThemeContext } from 'styled-components'
 
@@ -29,6 +29,16 @@ const ContactPage = ({ location }) => {
   const [emailSentMessage, setEmailSentMessage] = useState('')
 
   const theme = useContext(ThemeContext)
+
+  const { website } = useStaticQuery(graphql`
+    query Contact {
+      site {
+        website: siteMetadata {
+          titleAlt
+        }
+      }
+    }
+  `).site
 
   const handleSubmit = (event) => {
     event.preventDefault()

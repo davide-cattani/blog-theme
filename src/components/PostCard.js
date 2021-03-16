@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Img from 'gatsby-image'
-import theme from '../../config/theme'
+import { ThemeContext } from 'styled-components'
 import { Link } from 'gatsby'
 import { BiMap } from 'react-icons/bi'
 
@@ -20,6 +20,7 @@ const PostCard = ({ post, listItem }) => {
   const [excerpt, setExcerpt] = useState(
     postData.description.substring(0, EXCERPT_LENGTH) + '…'
   )
+  const theme = useContext(ThemeContext)
 
   return (
     <Card>

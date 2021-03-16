@@ -33,8 +33,9 @@ module.exports = {
   
   //OPTIONS FOR COMPONENTS
   navbar: {
-    HAS_SEARCH_FIELD: false,
-    HAS_SEARCH_MODAL: true,
+    HORIZONTAL: false, //navbar is horizontal also on desktop instead of side menu
+    HAS_SEARCH_FIELD: false,  //the search field is incapsulated inside the navbar
+    HAS_SEARCH_MODAL: true, //no search field, only icon that opens a fullscreen modal on click
   },
 
   //OPTIONS FOR STYLE

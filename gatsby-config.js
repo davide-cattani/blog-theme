@@ -37,6 +37,9 @@ module.exports = (themeOptions) => {
       author: website.author,
       twitter: website.twitter,
       facebook: website.facebook,
+      //access to website config from components
+      //theme is accessed using ThemeContext
+      website: website,
     },
     /* Plugins */
     plugins: [

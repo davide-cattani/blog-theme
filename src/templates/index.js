@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import config from '../../config/website'
 import { Container, Section, BigHeading } from '../elements'
 import specialBackground from '../../static/specialSectionBackground.png'
 import Layout from '../components/Layout/Layout'
@@ -12,12 +11,13 @@ import HomeShowcase from '../components/HomeShowcase'
 import MegaButton from '../components/MegaButton'
 
 const Index = ({ data }) => {
-  const { homepage, posts, showcaseCategory, showcasePost } = data
+  const { posts, showcaseCategory, showcasePost } = data
+  const { website } = data.site.siteMetadata
 
   return (
     <Layout>
       <SEO />
-      {config.home.HAS_CAROUSEL && (
+      {website.home.HAS_CAROUSEL && (
         <Section id='carousel'>
           <Container>
             <PostCarousel />
@@ -57,6 +57,16 @@ export default Index
 
 export const pageQuery = graphql`
   query IndexQuery($showcaseCategoryUid: String, $postNumber: Int!) {
+    site {
+      siteMetadata {
+        titleAlt
+        website {
+          home {
+            HAS_CAROUSEL
+          }
+        }
+      }
+    }
     homepage: prismicHomepage {
       data {
         title {

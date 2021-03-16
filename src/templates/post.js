@@ -5,7 +5,6 @@ import { BsArrowsExpand } from 'react-icons/bs'
 
 import Layout from '../components/Layout/Layout'
 import SEO from '../components/SEO/SEO'
-import website from '../../config/website'
 import SliceZone from '../components/SliceZone'
 
 import {
@@ -47,6 +46,7 @@ const TagsWrapper = styled.div`
 
 const Post = ({ data, location }) => {
   const { post } = data
+  const { website } = data.site
 
   const [fullFeaturedImage, setFullfeaturedImage] = useState(false)
 
@@ -208,6 +208,11 @@ export const pageQuery = graphql`
             ...GatsbyPrismicImageFluid
           }
         }
+      }
+    }
+    site {
+      website: siteMetadata {
+        titleAlt
       }
     }
   }
