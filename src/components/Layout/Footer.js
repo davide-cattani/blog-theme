@@ -43,7 +43,7 @@ const Footer = ({ logo }) => {
               <span role='img' aria-label='love'>
                 ❤️
               </span>{' '}
-              by <FooterAnchorLink href='https://lemurweb.dev'>lemurweb</FooterAnchorLink>
+              by <FooterAnchorLink href='https://davidecattani.dev'>catta</FooterAnchorLink>
             </p>
           </div>
         </div>
